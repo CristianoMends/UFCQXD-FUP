@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "funcoes.c"
 
-#include "tela.h"
-
-
-int main(){
+int main(int argc, char const *argv[]){
 	system("cls");					//comando pra limpar tela windows
-	tela.menu
+	menu();
 	return 0;
 }
+

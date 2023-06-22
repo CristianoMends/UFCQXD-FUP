@@ -1,34 +1,67 @@
-#include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
+#include <stdio.h>
+#include "funcoes.h"
 #include "item.h"
+
 
 Produto produtos[MAX_PRODUTOS];		//vetor de produtos
 
+void menu(){
+	int op;
+	do
+	{
+		system("cls");
+		printf("\n----------Menu----------\n");
+		printf("\n1 - Cadastrar produto\n2 - vender item\n3 - Produtos vendidos\n4 - Pesquisar produtos\n5 - estoque disponivel\n0 - Sair\n");
+		printf("\n------------------------\n");
+
+		scanf("%d", &op);
+		getchar();
+
+		switch(op){
+		case 1:
+			cadastrar();
+			break;
+		case 2:
+			vender();
+			break;
+		/*case 3:
+			vendidos();
+			break;*/
+		case 4:
+			pesquisar();
+			break;
+		case 5:
+			estoque();
+			break;
+		}
+		getchar();
+
+	} while (op != 0);
+
+}
+
 void cadastrar(){
 	
-	char produto[produto.MAX_PRODUTOS];
+	char produto[MAX_PRODUTOS];
 	float precos;
 	int quantidade;
 	int op;
-
-	do
+do
 	{
-        printf("\n----------Cadastrar produtos----------\n");
 		system("cls");
+        printf("\n----------Cadastrar produtos----------\n");
 		printf("\nNome do produto: ");
 		fgets(produto, sizeof(produto), stdin); 				//conta automaticamente o tamanho do produto
-
-		//---------------------------------------------- preço e qtde do produto
-		printf("\nDigite o preco: ");
+		produto[strcspn(produto, "\n")] = '\0'; // Remove o '\n' da string produto
+		printf("Digite o preco: ");
 		scanf("%f", &precos);
-		printf("\nDigite a quantidade: ");
+		printf("Digite a quantidade: ");
 		scanf("%d", &quantidade);
 	
 		//---------------------------------------------- enviando os lançamentos para o vetor produtos
-
-		for (int i = 0; i < MAX_PRODUTOS; ++i)
-		{
+		int i;
+		for (i = 0; i < MAX_PRODUTOS; ++i){
 			if (produtos[i].disponivel == 0)
 			{
 				produtos[i].precos = precos;
@@ -40,7 +73,8 @@ void cadastrar(){
 			}
 		}
 		//---------------------------------------------- menu de opções que fica embaixo
-		printf("\n1 - Adicionar novo produto\n0 - Sair\n");
+		printf("\nAdicionado(s) [%d] [%s] ao estoque!\n",quantidade,produto);
+		printf("\n1 - Adicionar novo produto\n0 - Menu principal\n");
 		scanf("%d", &op);
 	} while (op != 0);
 }
@@ -137,8 +171,8 @@ void pesquisar(){
 		system("cls");
 		printf("\n Digite nome do produto: ");
 		fgets(produto, sizeof(produto), stdin);
-
-		for (int i = 0; i < MAX_PRODUTOS; ++i)
+		int i;
+		for (i = 0; i < MAX_PRODUTOS; ++i)
 		{
 			if (strstr(produtos[i].produto, produto) != NULL)
 			{
@@ -163,8 +197,8 @@ void estoque(){
 	printf("\nLISTA DE PRODUTOS\n");
 	int op;
 	do
-	{
-		for (int i = 0; i < MAX_PRODUTOS; ++i)
+	{	int i;
+		for (i = 0; i < MAX_PRODUTOS; ++i)
 		{
 			if (produtos[i].disponivel == 1)
 			{

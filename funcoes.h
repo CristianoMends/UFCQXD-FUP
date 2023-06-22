@@ -1,4 +1,7 @@
-#include "produto.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include "item.h"
 
 Produto produtos[MAX_PRODUTOS];		//vetor de produtos
 

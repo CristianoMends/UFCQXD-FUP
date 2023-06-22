@@ -1,8 +1,5 @@
 #define MAX_PRODUTOS 10
-
-
-typedef struct {
-	
+typedef struct {	
 	char produto[MAX_PRODUTOS];		//vetor de strings que armazena os nomes dos produtos
 	float precos;
 	int quantidade;

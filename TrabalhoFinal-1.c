@@ -119,7 +119,7 @@ void vender(){
 	scanf("%d", &qtde);
 	--codigo;
 
-	if (qtde <= produtos[codigo].quantidade )
+	if (qtde <= produtos[codigo].quantidade )           // se a qtde for menor ou igual do que estoque estao da pra vender
 	{
 		produtos[codigo].quantidade -= qtde;
 
@@ -137,7 +137,7 @@ void vender(){
 
 }
 
-//Produto historico[qVendas];
+//Produto historico[qVendas]; //alocação dinamica aqui
 
 //----------------------------------------------------------função pra retornar o histórico de vendas
 /*void vendidos(){

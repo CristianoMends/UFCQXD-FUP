@@ -13,6 +13,8 @@ typedef struct sistemaFUP{
 
 } Produto;
 
+//teste
+
 Produto produtos[MAX_PRODUTOS];		//vetor de produtos
 
 void menu();

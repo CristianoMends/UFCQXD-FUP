@@ -13,7 +13,7 @@ typedef struct sistemaFUP{
 
 } Produto;
 
-//teste
+//teste 2
 
 Produto produtos[MAX_PRODUTOS];		//vetor de produtos
 

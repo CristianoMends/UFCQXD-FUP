@@ -8,8 +8,7 @@ Produto produtos[MAX_PRODUTOS];		//vetor de produtos
 
 void menu(){
 	int op;
-	do
-	{
+	do{
 		system("cls");
 		printf("\n----------Menu----------\n");
 		printf("\n1 - Cadastrar produto\n2 - vender item\n3 - Produtos vendidos\n4 - Pesquisar produtos\n5 - estoque disponivel\n0 - Sair\n");
@@ -56,8 +55,10 @@ do
 		nome[strcspn(nome, "\n")] = '\0'; // Remove o '\n' da string produto
 		printf("Digite o preco: ");
 		scanf("%f", &preco);
+		getchar();
 		printf("Digite a quantidade: ");
 		scanf("%d", &quantidade);
+		getchar();
 	
 		//---------------------------------------------- enviando os lanÃ§amentos para o vetor produtos
 		int i;
@@ -75,6 +76,7 @@ do
 		printf("\nSTATUS: [%d] item(s) de [%s] cadastrado(s) ao estoque!\n",quantidade,nome);
 		printf("\n1 - Cadastrar novo produto\n0 - Menu principal\n");
 		scanf("%d", &op);
+		getchar(); //irá consumir o caractere de nova linha restante no buffer de entrada após a leitura da variavel op com scanf
 	} while (op != 0);
 }
 

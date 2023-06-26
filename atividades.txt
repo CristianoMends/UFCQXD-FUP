@@ -1,7 +1,0 @@
-1 - Criar um novo arquivo main, separado.
-
-2 - Usar alocação dinamica
-
-3- Ponteiros
-
-4- Definir a funcao que exibe o historico de vendas

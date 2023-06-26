@@ -6,6 +6,17 @@ typedef struct {
 	float preco;
 	int quantidade;
 	int disponivel;
-	int status; 				//status 1 na loja, status 0 vendido
 } Produto;
 
+typedef struct {
+    char nome[MAX_PRODUTOS];
+    int quantidade;
+} Venda;
+
+void menu();
+void cadastrar();
+void vender();
+void historico();
+void pesquisar();
+void estoque();
+void liberar_memoria();

@@ -84,35 +84,40 @@ void cadastrar() {
 void vender() {
     int codigo;
     int qtde;
-
-    estoque();
-    printf("\nDigite o codigo do produto para vender: ");
-    scanf("%d", &codigo);
-    printf("\nDigite a quantidade: ");
-    scanf("%d", &qtde);
-    --codigo;
-
-    if (produtos[codigo] != NULL && qtde <= produtos[codigo]->quantidade) { //se a qtde for <= do que estoque entao da pra vender
-        produtos[codigo]->quantidade -= qtde;
-
-        Venda* nova_venda = (Venda*) malloc(sizeof(Venda));
-
-        // Adiciona a venda ao histórico
-        strcpy(nova_venda->nome, produtos[codigo]->nome);
-        nova_venda->quantidade = qtde;
-
-        historico_vendas[num_vendas] = nova_venda;
-        num_vendas++;
-
-        printf("\nProduto vendido!\n");
-    } else {
-        printf("\nProduto sem estoque\n");
-    }
-    if (produtos[codigo]->quantidade == 0)
-    {
-        produtos[codigo]->disponivel = 0;            //Qtde zerada retira o produto do estoque
-    }
-    getchar();
+    int op;
+    do{   	
+		estoque();
+	    printf("\nDigite o codigo do produto para vender: ");
+	    scanf("%d", &codigo);
+	    printf("\nDigite a quantidade: ");
+	    scanf("%d", &qtde);
+	    --codigo;
+	
+	
+	    if (produtos[codigo] != NULL && qtde <= produtos[codigo]->quantidade) { //se a qtde for <= do que estoque entao da pra vender
+	        produtos[codigo]->quantidade -= qtde;
+	
+	        Venda* nova_venda = (Venda*) malloc(sizeof(Venda));
+	
+	        // Adiciona a venda ao histórico
+	        strcpy(nova_venda->nome, produtos[codigo]->nome);
+	        nova_venda->quantidade = qtde;
+	
+	        historico_vendas[num_vendas] = nova_venda;
+	        num_vendas++;
+	
+	        printf("\nProduto vendido!\n");
+	    } else {
+	        printf("\nProduto sem estoque\n");
+	    }
+	    if (produtos[codigo]->quantidade == 0){
+	        produtos[codigo]->disponivel = 0;            //Qtde zerada retira o produto do estoque
+	    }
+		printf("\n1 - Realizar nova Venda\n0 - Menu principal\n");
+	    scanf("%d", &op);
+	    getchar();
+	    
+	}while(op != 0);
 }
 //----------------------------------------------------------------------- mostrar historico
 void historico() {
@@ -122,7 +127,8 @@ void historico() {
     if (num_vendas == 0) {
         printf("Nenhuma venda realizada.\n");
     } else {
-        for (int i = 0; i < num_vendas; i++) {
+    	int i;
+        for (i = 0; i < num_vendas; i++) {
             printf("Produto: %s\n", historico_vendas[i]->nome);
             printf("Quantidade: %d\n", historico_vendas[i]->quantidade);
             printf("------------------------\n");
@@ -169,7 +175,7 @@ void pesquisar() {
 }
 //----------------------------------------------------------------------- funcao para verificar todo o estoque
 void estoque() {
-    system("cls");
+    system("cls");	
     printf("\nESTOQUE DISPONIVEL\n");
 
     int i;
@@ -188,8 +194,10 @@ void estoque() {
 }
 //-------------------------------------------------------funcao liberar a memoria
 void liberar_memoria() {
-    for (int i = 0; i < MAX_PRODUTOS; i++) {
+	int i;
+    for (i = 0; i < MAX_PRODUTOS; i++) {
         free(produtos[i]);
         free(historico_vendas[i]);
     }
+    printf("Sistema desligado!");
 }
